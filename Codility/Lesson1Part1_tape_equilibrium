@@ -11,43 +11,26 @@ Question : https://codility.com/demo/take-sample-test/tape_equilibrium/
 public class Lesson1Part1_tape_equilibrium {
 
 	public static int solution(int[] A) {
-		// write your code in Java SE 8
+        if (A == null || A.length == 0)
+            return -1;
+        int len = A.length;
+        long sum = 0;
+        for (int i = 0; i < len; i++) {
+            sum += A[i];
+        }
+        long minDiff = -1;
+        long leftSum = 0;
+        for (int i = 1; i < len; i++) {
+            leftSum += A[i - 1];
+            long tmpDiff = sum - leftSum * 2;
+            if (tmpDiff < 0)
+                tmpDiff = -tmpDiff;
 
-		int minimum = Integer.MAX_VALUE;
-		int lSum = 0;
-		int rSum = 0;
-
-		if (A.length == 1) {
-			return A[0];
-		} else if (A.length == 2) {
-			return Math.abs(A[0] - A[1]);
-		}
-
-		else {
-			for (int i = 0; i < A.length; i++) {
-				lSum += A[i];
-
-			}
-
-			for (int i = 0; i < A.length; i++) { // traverse again to see the
-													// diff b/w eleams from L-R
-
-				rSum += A[i];
-				lSum -= A[i];
-
-				// take diff
-
-				if (Math.abs(rSum - lSum) < minimum) {
-					minimum = Math.abs(rSum - lSum);
-				}
-
-			}
-
-		}
-
-		return minimum;
-
-	}
+            if (minDiff == -1 || minDiff > tmpDiff)
+                minDiff = tmpDiff;
+        }
+        return (int) minDiff;
+    }
 
 	public static void main(String[] args) {
 		System.out.println(solution(new int[] { -1000, 1000 }));
