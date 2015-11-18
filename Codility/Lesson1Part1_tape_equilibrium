@@ -1,0 +1,56 @@
+/*
+
+Question : https://codility.com/demo/take-sample-test/tape_equilibrium/
+
+@author: Sreesha Nagaraj
+
+
+*/
+
+
+public class Lesson1Part1_tape_equilibrium {
+
+	public static int solution(int[] A) {
+		// write your code in Java SE 8
+
+		int minimum = Integer.MAX_VALUE;
+		int lSum = 0;
+		int rSum = 0;
+
+		if (A.length == 1) {
+			return A[0];
+		} else if (A.length == 2) {
+			return Math.abs(A[0] - A[1]);
+		}
+
+		else {
+			for (int i = 0; i < A.length; i++) {
+				lSum += A[i];
+
+			}
+
+			for (int i = 0; i < A.length; i++) { // traverse again to see the
+													// diff b/w eleams from L-R
+
+				rSum += A[i];
+				lSum -= A[i];
+
+				// take diff
+
+				if (Math.abs(rSum - lSum) < minimum) {
+					minimum = Math.abs(rSum - lSum);
+				}
+
+			}
+
+		}
+
+		return minimum;
+
+	}
+
+	public static void main(String[] args) {
+		System.out.println(solution(new int[] { -1000, 1000 }));
+	}
+
+}
