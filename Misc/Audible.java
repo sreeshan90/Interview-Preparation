@@ -80,4 +80,41 @@ public class Audible {
 		
 	}
 	
+		/*
+	 * Method to find the missing num in an array of n consecutive numbers
+	 * */
+	public static int missingNum(int[] inArr){
+		
+		TreeSet<Integer> set = new TreeSet<>();
+		
+		//get rid of duplicates if any and get it sorted
+		
+		for(int i=0;i<inArr.length;i++){
+			
+			set.add(inArr[i]);
+		}
+		
+		int start = set.first();
+		
+		Iterator it = set.iterator();
+		//skip first elem
+		it.next();
+		
+		while(it.hasNext()){
+	
+			int num = (int) it.next();
+			start++;	
+			
+			if(num != start){
+				return start;
+			}
+			else{
+				continue;
+			}
+			
+		}
+		return -1;
+
+	}
+	
 }
