@@ -48,4 +48,36 @@ public class Audible {
 		}
 		
 	}
+	
+		/*
+	 * Method to compute index of first non-repeated character
+	 * */
+	public static int firstNonRepeatedCharIndex(String input){
+		
+		char[] inArr = input.toCharArray();
+		HashMap<Character,Integer> map = new HashMap();
+		
+		for(int i=0;i<inArr.length;i++){
+			if(map.containsKey(inArr[i])){
+				map.put(inArr[i], map.get(inArr[i])+1);
+			}
+			else{
+				map.put(inArr[i],1);
+			}
+		 }
+		
+		for(int i=0;i<inArr.length;i++){
+			
+			if(map.get(inArr[i]) == 1){
+				return i;
+			}
+		}
+		
+			return -1;
+		
+		
+		
+		
+	}
+	
 }
