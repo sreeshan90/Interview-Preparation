@@ -26,4 +26,26 @@ public class Audible {
 		
 		System.out.println(map);
 	}
+	
+		/*
+	 * Method to compute nth largest number in an array
+	 * */
+	public static int nthLargest(int[] input, int n){
+		
+		TreeSet<Integer> s = new TreeSet<>();
+		
+		for(int i = 0 ;i<input.length;i++){
+			s.add(input[i]);
+		}
+			
+		if(n > input.length){
+			System.out.println("Invalid n");
+			return -1;
+		}
+		else{
+			Object[] arr =  s.toArray();
+			return (int) arr[n-1];
+		}
+		
+	}
 }
