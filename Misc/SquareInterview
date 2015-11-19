@@ -39,7 +39,7 @@ PATH: everything else
  * If you need more classes, simply define them inline.
  */
 
-class Solution {
+class SquareInterview {
   public static void main(String[] args) {
    
      System.out.println("Output 1 "+whateverYouCallIt("http://a.com/b/c/d.html", "https://b.com/e/f/g.html"));
