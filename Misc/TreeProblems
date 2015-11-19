@@ -124,68 +124,44 @@ public class TreeProblems {
 
 	}
 
-	public static boolean isBST(TreeNode tmpRoot) {
+	
+		public static boolean isaBST(TreeNode tmpRoot) {
 
 		Queue<TreeNode> currentLevel = new LinkedList<TreeNode>();
-		Queue<TreeNode> nextLevel = new LinkedList<TreeNode>();
 
 		currentLevel.add(tmpRoot);
-		int count = -1; // keep track of levels
 
 		while (!currentLevel.isEmpty()) {
-			count++;
-			Iterator<TreeNode> iter = currentLevel.iterator();
 
-			while (iter.hasNext()) {
+			TreeNode currentNode = currentLevel.poll();
+	
+		
+			if ( null != currentNode.left ){
+				
+				if (currentNode.data < currentNode.left.data) {
 
-				TreeNode currentNode = iter.next();
-
-				if (currentNode.data < currentNode.left.data || currentNode.data < currentNode.right.data)
 					return false;
-				else {
-					if (currentNode.left != null) {
-						nextLevel.add(currentNode.left);
-
-					}
-					if (currentNode.right != null) {
-						nextLevel.add(currentNode.right);
-					}
 				}
 
-			}
-
-			currentLevel = nextLevel;
-			nextLevel = new LinkedList<TreeNode>();
-
-		}
-
-		return true;
-	}
-
-	public static boolean isaBST(TreeNode tmpRoot) {
-
-		Queue<TreeNode> currentLevel = new LinkedList<TreeNode>();
-
-		currentLevel.add(tmpRoot);
-
-		while (!currentLevel.isEmpty()) {
-
-			TreeNode currentNode = currentLevel.peek();
-
-			if (currentNode.data < currentNode.left.data || currentNode.data > currentNode.right.data) {
-
-				return false;
-			}
-
-			if (currentNode.left != null)
 				currentLevel.add(currentNode.left);
-			if (currentNode.right != null)
-				currentLevel.add(currentNode.right);
+			
+			}
+				
+			if (null != currentNode.right){
+				
+				if (currentNode.data > currentNode.right.data) {
 
+					return false;
+				}
+
+				currentLevel.add(currentNode.right);
+			
+			}
 		}
 
 		return true;
 
 	}
+
 
 }
