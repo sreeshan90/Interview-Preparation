@@ -1,3 +1,5 @@
+package com.audible.practice;
+
 /**
  * Solution to Swift Navigation Application Challenge
  * 
@@ -134,19 +136,23 @@ public class SwiftNavigationChallenge {
 		}
 	}
 
-	/**
-	 *Main method of the class
-	 * 
-	 * @param args
-	 *            : String[] - command params
-	 * @return : void
-	 * 
-	 */
 	public static void main(String[] args) {
 
-		long res = FiboDAC(Integer.valueOf(args[0]));
+		
+			//4th fibonacci number
+			testMethod(4);
+			//7th fibonacci number
+			testMethod(7);
+			//9th fibonacci number
+			testMethod(9);			
+		
+		
+	}
+	
+	public static void testMethod(long n){
+		
+		long res = FiboDAC(n);
 
-		System.out.println(res);
 		if (res % 3 == 0) {
 			System.out.println("... Buzz");
 		} else if (res % 5 == 0) {
@@ -157,6 +163,7 @@ public class SwiftNavigationChallenge {
 			System.out.println(res);
 		}
 
+		
 	}
 
 }
