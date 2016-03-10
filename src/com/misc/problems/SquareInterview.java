@@ -1,3 +1,6 @@
+package com.misc.problems;
+
+
 import java.io.*;
 import java.util.*;
 

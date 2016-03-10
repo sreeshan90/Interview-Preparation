@@ -1,15 +1,15 @@
+package com.codility.lesson1;
+
 /*
 
 Question : https://codility.com/demo/take-sample-test/tape_equilibrium/
-
 @author: Sreesha Nagaraj
 
 
 */
 
 
-
-public class Lesson1Part1_tape_equilibrium {
+public class Tape_equilibrium {
 
 	public static int solution(int[] A) {
 		if (A == null || A.length == 0)

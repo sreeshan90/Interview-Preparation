@@ -1,4 +1,4 @@
-package com.misc.practice;
+package com.misc.problems;
 
 
 /*

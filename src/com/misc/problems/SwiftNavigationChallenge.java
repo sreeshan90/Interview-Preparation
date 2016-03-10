@@ -1,3 +1,7 @@
+package com.misc.problems;
+
+
+
 /**
  * Solution to Swift Navigation Application Challenge
  * 

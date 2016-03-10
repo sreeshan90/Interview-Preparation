@@ -1,4 +1,4 @@
-package com.misc.practice;
+package com.misc.problems;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -72,7 +72,7 @@ public class TreeProblems {
 		 */
 
 		// printLevelOrder(x.root);
-		System.out.println(isBST(x.root));
+		System.out.println(isaBST(x.root));
 
 	}
 
