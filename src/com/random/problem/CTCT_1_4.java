@@ -1,4 +1,4 @@
-package com.google.interview;
+package com.random.problem;
 
 public class CTCT_1_4 {
 

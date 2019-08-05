@@ -1,4 +1,4 @@
-package com.misc.problems;
+package com.random.problem;
 
 import java.util.Iterator;
 import java.util.LinkedList;

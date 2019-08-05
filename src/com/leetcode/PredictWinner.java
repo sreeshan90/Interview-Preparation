@@ -1,4 +1,4 @@
-
+package com.leetcode;
 public class PredictWinner {
 
 	public boolean PredictTheWinner(int[] nums) {

@@ -1,4 +1,4 @@
-package com.sreesha.test.microsoft;
+package com.microsoft.interview;
 
 import java.util.Stack;
 

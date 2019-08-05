@@ -1,4 +1,4 @@
-package com.google.interview;
+package com.random.problem;
 
 import java.util.Stack;
 

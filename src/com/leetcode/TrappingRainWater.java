@@ -1,4 +1,4 @@
-package com.sreesha.test;
+package com.leetcode;
 
 public class TrappingRainWater {
 

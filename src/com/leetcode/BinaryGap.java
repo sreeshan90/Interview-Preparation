@@ -1,4 +1,4 @@
-package com.sreesha.test;
+package com.leetcode;
 
 import java.util.LinkedList;
 import java.util.Queue;
