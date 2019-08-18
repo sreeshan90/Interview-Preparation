@@ -8,19 +8,19 @@ public class Tries {
 	public static void main(String[] args) {
 
 		List<String> list = new ArrayList<>();
-		
+
 		list.add("pqrs");
 		list.add("pprt");
 		list.add("psst");
 		list.add("qqrs");
 		list.add("pqrs");
 		list.add("pqr");
-		
+
 		Trie trie = new Trie();
-		
-		for(String s : list)
+
+		for (String s : list)
 			trie.insert(s);
-		
+
 		System.out.println(trie.query("pqrqq"));
 	}
 
@@ -56,8 +56,8 @@ class Trie {
 
 		for (int i = 0; i < s.length(); i++) {
 
-			if (current.trieNodes[s.charAt(i)-'a'] == null) {
-				current.trieNodes[s.charAt(i)-'a'] = new TrieNode();
+			if (current.trieNodes[s.charAt(i) - 'a'] == null) {
+				current.trieNodes[s.charAt(i) - 'a'] = new TrieNode();
 			}
 
 			current = current.next(s.charAt(i));
@@ -73,7 +73,7 @@ class Trie {
 
 		for (int i = 0; i < s.length(); i++) {
 
-			if (current.trieNodes[s.charAt(i)-'a'] == null) {
+			if (current.trieNodes[s.charAt(i) - 'a'] == null) {
 				throw new RuntimeException("String doesnt exist");
 			}
 

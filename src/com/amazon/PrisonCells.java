@@ -6,7 +6,7 @@ public class PrisonCells {
 
 	public static void main(String[] args) {
 		
-		int[] input = {1,0,0,1,0,0,1,0};
+		int[] input = {1,0,0,1,0,0,1,0,1,0,0,0,1,1,1,1};
 		int length = 1000000000;
 		System.out.println(Arrays.toString(prisonAfterNDays(input,length)));
 
