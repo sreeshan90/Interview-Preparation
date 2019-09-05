@@ -1,5 +1,8 @@
 package com.amazon;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class test {
 
 	public static void main(String[] args) {
@@ -24,6 +27,10 @@ public class test {
         sb.deleteCharAt(sb.indexOf(","));
         
         System.out.println(sb);
+
+        Queue<Character> q = new LinkedList<>();
+
+        
 				
         
 	}

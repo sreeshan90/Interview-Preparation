@@ -10,6 +10,8 @@ public class OA_Leetcode_SubstringofSizeK {
     public static void main(String[] args) {
 
         System.out.println(subStringofSizeK("awaglknagawunagwkwagl",4));
+
+
     }
     public static List<String> subStringofSizeK(String str, int K){
 

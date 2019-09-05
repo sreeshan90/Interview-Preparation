@@ -31,7 +31,7 @@ public class Powerset {
 			// add element
 			resultList.add(nums[i]);
 			// Explore
-			subsetsHelper(list, resultList, nums, i + 1);
+			subsetsHelper(list, resultList, nums, i+1);
 			// remove
 			resultList.remove(resultList.size() - 1);
 		}
