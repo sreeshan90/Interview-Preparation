@@ -16,10 +16,12 @@ public class wordbrea2 {
 	
 	public static void main(String args[]) throws Exception{
 		Set<String> dict = new HashSet<>();
-		dict.add("lap");
-		dict.add("i");
-		dict.add("laptop");
-		System.out.println(wordBreak("ilaptop",dict,0));
+		dict.add("cat");
+		dict.add("cats");
+		dict.add("and");
+		dict.add("sand");
+		dict.add("dog");
+		System.out.println(wordBreak("catsanddog",dict,0));
 	}
 
 	public static  List<String> wordBreak(String input, Set<String> dictionary, int index) throws Exception {

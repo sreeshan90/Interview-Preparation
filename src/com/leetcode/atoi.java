@@ -50,7 +50,7 @@ public class atoi {
 		// double res =Double.parseDouble(str);
 
 		// System.out.println((int)res);
-
+		
 	}
 
 }
