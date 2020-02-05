@@ -13,7 +13,7 @@ public class CustomSortString {
 		
 	}
 	
-	  public String customSortString(String S, String T) {
+	public String customSortString(String S, String T) {
 	      
 	        Map<Character, Integer> lookup = new HashMap<>();
 	        
@@ -33,5 +33,5 @@ public class CustomSortString {
 	        });
 	        
 	        return arr.toString();
-	    }
+	}
 }
