@@ -1,5 +1,7 @@
 package com.random.problem;
 
+import java.util.*;
+
 public class misc {
 
 	public static void main(String args[]) {
@@ -7,6 +9,13 @@ public class misc {
 		String input = "Helo";
 
 		System.out.println(isUnique("Helo asdhk254\njs\n"));
+
+		LinkedHashMap map = new LinkedHashMap(){
+			protected boolean n(Map.Entry eldest)
+			{
+				return this.size() > 10;
+			}
+		};
 
 	}
 
