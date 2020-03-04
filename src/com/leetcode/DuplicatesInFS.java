@@ -17,7 +17,6 @@ public class DuplicatesInFS {
             for (String path : paths) {
 
                 String[] str = path.split(" ");
-
                 String folderPath = str[0];
 
                 for (int i = 1; i < str.length; i++) {
@@ -29,7 +28,6 @@ public class DuplicatesInFS {
                     pathsMap.get(content).add(filePath);
                 }
             }
-
 
             List<List<String>> result = new ArrayList<>();
 
