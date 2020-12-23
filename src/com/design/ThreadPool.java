@@ -17,12 +17,12 @@ class ConnectionPool {
         return instance;
     }
 
-    public IConnection acquire() {
+    public IConnection acquireConnectionImpl() {
 
         return null;
     }
 
-    public void release(IConnection connection) {
+    public void releaseConnectionImpl(IConnection connection) {
 
     }
  }
