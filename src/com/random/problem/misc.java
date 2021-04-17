@@ -6,7 +6,7 @@ public class misc {
 
 	public static void main(String args[]) {
 
-		String input = "Helo";
+		/*String input = "Helo";
 
 		System.out.println(isUnique("Helo asdhk254\njs\n"));
 
@@ -15,8 +15,13 @@ public class misc {
 			{
 				return this.size() > 10;
 			}
-		};
+		};*/
 
+		Queue<Integer> q = new LinkedList<>();
+
+		q.offer(1);
+		q.offer(2);
+		q.offer(3);
 	}
 
 	public static boolean isUnique(String input) {

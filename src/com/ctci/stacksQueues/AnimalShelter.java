@@ -88,7 +88,6 @@ public class AnimalShelter {
         System.out.println(shelter.deQueueCat());
         System.out.println(shelter.deQueueDog());
 
-
     }
 
 }

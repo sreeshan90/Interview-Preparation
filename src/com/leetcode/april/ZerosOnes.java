@@ -51,8 +51,6 @@ public class ZerosOnes {
 
                     result = Math.max(result, intermediet.size());
                 }
-
-
             }
 
             return result;
