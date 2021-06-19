@@ -8,7 +8,6 @@ package com.ctci.graphsAndTrees;
 public class MiminalTree {
     int[] nums;
 
-
     public TreeNode helper (int leftIndex, int rightIndex) {
 
         if (leftIndex > rightIndex) {
