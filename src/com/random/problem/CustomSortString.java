@@ -9,11 +9,11 @@ import java.util.Map;
 public class CustomSortString {
 
 	public static void main(String args[]) throws IOException{
-		
-		
+
+		System.out.println(customSortString("asdf", "sadf"));
 	}
 	
-	public String customSortString(String S, String T) {
+	public static String customSortString(String S, String T) {
 	      
 	        Map<Character, Integer> lookup = new HashMap<>();
 	        
@@ -32,6 +32,6 @@ public class CustomSortString {
 	            
 	        });
 	        
-	        return arr.toString();
+	        return Arrays.toString(arr);
 	}
 }

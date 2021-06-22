@@ -107,8 +107,5 @@ public class CircularLinkedList {
 		size++;
 	}
 	
-	
-	
-	
 }
 
