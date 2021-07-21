@@ -16,10 +16,8 @@ public class TopCoderInchWorm {
 		int count = 0;
 
 		for (int i = 0; i <= branch; i = i + rest) {
-
 			if (i % leaf == 0)
 				count++;
-
 		}
 
 		return count;
