@@ -1,5 +1,4 @@
 package com.salesforce;
-
 import java.util.*;
 import static java.util.stream.Collectors.toSet;
 
@@ -16,7 +15,7 @@ class DependCmd implements Command {
     public Map<String, Object> execute(List<String> input) {
         String dep = input.get(0);
         Map<String,Object> result = new LinkedHashMap<>(); // stores the results to print
-        Component curr = Component.getInstance(dep);
+        Component curr = Component.getInstance(dep); // inserting to the map during parsing of dependency - hence testcase to list in order of installation fails
 
         for (String strDependency : input.subList(1, input.size())) {
             Component dependency = Component.getInstance(strDependency);
@@ -37,12 +36,13 @@ class InstallCmd implements Command {
 
     @Override
     public Map<String, Object> execute(List<String> args) {
-        Map<String, Object> result = new LinkedHashMap<>();
+        Map<String, Object> result = new LinkedHashMap<>(); // LinkedHashMap to keep track of order of execution
         for (String depName : args) {
 
             Component dep = Component.getInstance(depName);
             install(dep, result);
         }
+
         return result;
     }
 
@@ -50,13 +50,12 @@ class InstallCmd implements Command {
         if (!current.isInstalled()) {
             current.setInstalled(true);
 
-
             for (Component dependency : current.getDependencies()) {
                 if (!dependency.isInstalled()) {
-                    install(dependency, result);
+                    install(dependency, result); // recursive installing of dependencies
                 }
-
             }
+
             result.put(current.getName(), "Installing");
 
         }
@@ -69,11 +68,10 @@ class InstallCmd implements Command {
 }
 class ListCmd implements Command {
 
-
     @Override
     public Map<String, Object> execute(List<String> args) {
         Map<String, Object> result = new LinkedHashMap<>();
-        Component.getInstalled().forEach(m -> result.put(m.getName(),""));
+        Component.getInstalled().forEach(m -> result.put(m.getName(),"")); // get all the installed components
         return result;
     }
 
@@ -82,10 +80,10 @@ class RemoveCmd implements Command {
 
     @Override
     public Map<String, Object> execute(List<String> args) {
-        Component d = Component.getInstance(args.get(0));
+        Component component = Component.getInstance(args.get(0));
         Map<String,Object> result = new LinkedHashMap<>();
-        if(d != null)
-            return remove(d, result);
+        if( component != null )
+            return remove(component, result);
 
         result.put(args.get(0),"is not installed");
         return result;
@@ -112,7 +110,7 @@ class RemoveCmd implements Command {
 
             for (Component dependency : installedDependencies) {
 
-               if (dependency.getDependents().stream().filter(Component::isInstalled).collect(toSet()).isEmpty()) {
+               if (dependency.getDependents().stream().filter(Component::isInstalled).collect(toSet()).isEmpty()) { // remove only who don't have any dependents
                     result = remove(dependency, result);
                }
             }
@@ -124,24 +122,25 @@ class RemoveCmd implements Command {
 
 class Component {
 
-    protected static Map<String, Component> dependencyMap = new HashMap<String, Component>();
+    protected static LinkedHashMap<String, Component> dependencyMap = new LinkedHashMap<>();
     private String name;
-    private Set<Component> dependents = new HashSet<Component>();
-    private Set<Component> dependencies = new HashSet<Component>();
-
-    private boolean installed;
+    private boolean isInstalled;
+    private Set<Component> dependents = new HashSet<>();
+    private Set<Component> dependencies = new HashSet<>();
 
     private Component(String name) {
         this.name = name;
     }
 
     public static Component getInstance(String name) {
-        Component target = dependencyMap.get(name);
-        if (target == null) {
-            target = new Component(name);
-            dependencyMap.put(name, target);
+        Component component = dependencyMap.get(name);
+
+        if (component == null) {
+            component = new Component(name);
+            dependencyMap.put(name, component);
         }
-        return target;
+
+        return component;
     }
 
     public String getName() {
@@ -149,11 +148,11 @@ class Component {
     }
 
     public boolean isInstalled() {
-        return installed;
+        return isInstalled;
     }
 
     public void setInstalled(boolean installed) {
-        this.installed = installed;
+        this.isInstalled = installed;
     }
 
     public Set<Component> getDependents() {
@@ -199,17 +198,12 @@ class Component {
         return name != null ? name.hashCode() : 0;
     }
 
-
     public static Collection<Component> getAll() {
         return dependencyMap.values();
     }
 
-    public static void clearAll() {
-        dependencyMap.clear();
-    }
-
-    public static Set<Component> getInstalled() {
-        Set<Component> installed = new HashSet<Component>();
+    public static List<Component> getInstalled() {
+        List<Component> installed = new LinkedList<>();
         for (Component module : dependencyMap.values()) {
             if (module.isInstalled())
                 installed.add(module);
@@ -225,22 +219,12 @@ public class Solution {
 
     private static Map<String, Command> COMMAND_LIST = new HashMap<>();
 
-    static {
-
-
-        COMMAND_LIST.put("INSTALL", new InstallCmd());
-        COMMAND_LIST.put("REMOVE", new RemoveCmd());
-        COMMAND_LIST.put("LIST", new ListCmd());
-        COMMAND_LIST.put("DEPEND", new DependCmd());
-    }
-
     static void doIt(String[] input) {
 
         for (String line : input) {
             if (line.equals("END")) {
                 System.out.println(line);
                 break;
-
             }
             String[] arguments = line.split("[ ]+");
             Command cmd = COMMAND_LIST.get(arguments[0]);
@@ -251,13 +235,13 @@ public class Solution {
             System.out.println(line);
             List<String> args = new LinkedList<String>(Arrays.asList(arguments));
             args.remove(0); // remove command
-            Map<String, Object> success = cmd.execute(args);
-            success.entrySet().stream().forEach(e -> {
+            Map<String, Object> cmdResult = cmd.execute(args); // execute each command
+            cmdResult.entrySet().stream().forEach(e -> {
                 if (e.getValue().equals("Installing") || e.getValue().equals("Removing")) {
-                    System.out.println("\t" +  e.getValue() + " " + e.getKey());
+                    System.out.println(  e.getValue() + " " + e.getKey());
                 }
                 else {
-                    System.out.println("\t" + e.getKey() + " " + e.getValue());
+                    System.out.println( e.getKey() + " " + e.getValue());
                 }
 
             });
@@ -265,6 +249,12 @@ public class Solution {
     }
 
     public static void main(String[] args){
+
+        COMMAND_LIST.put("INSTALL", new InstallCmd());
+        COMMAND_LIST.put("REMOVE", new RemoveCmd());
+        COMMAND_LIST.put("LIST", new ListCmd());
+        COMMAND_LIST.put("DEPEND", new DependCmd());
+
         Scanner in = new Scanner(System.in);
 
         int _input_size = 0;
