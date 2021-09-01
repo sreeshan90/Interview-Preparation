@@ -85,7 +85,5 @@ public class MovingAverages {
     public static void main(String[] args) throws Exception {
         int[] arr = new int[]{1,2,3,4,5,6};
         System.out.println(getMovingAvg(arr, 5));
-
-
     }
 }
