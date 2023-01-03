@@ -1,6 +1,7 @@
 package com.leetcode.lc75;
 
 public class NumOfIslands {
+    // https://leetcode.com/problems/number-of-islands/
     public int numIslands(char[][] grid) {
 
         // for each position check if u can find a land - if yes then recursively check for next possible land
